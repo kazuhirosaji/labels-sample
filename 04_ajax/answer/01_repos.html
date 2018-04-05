@@ -1,15 +1,31 @@
 <div id="app">
-  <h1>axios test</h1>
+  <h1>axios test</h1> 
+  <button v-on:click="axios_get">GET</button>
+  <li v-for="repo in repos">
+    {{ repo['name'] }}
+  </li>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/vue"></script>
 <script>
-  axios.get('https://api.github.com/orgs/slogan-tech/repos')
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+var app = new Vue({
+  el: '#app',
+  data: {
+    repos: []
+  },
+  methods: {
+    axios_get: function () {
+        axios.get('https://api.github.com/orgs/slogan-tech/repos')
+        .then(function (response) {
+          app.repos = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+})
+
+
 </script>
 

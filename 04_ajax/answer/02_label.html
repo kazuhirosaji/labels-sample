@@ -1,0 +1,19 @@
+<div id="app">
+  <h1>post test</h3>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script>
+  // Make a request for a user with a given ID
+  axios.post('https://api.github.com/repos/kazuhirosaji/labels-sample/labels?access_token=xxxx', {
+    name : "saj_test",
+    color: "dbefff"
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+</script>
+

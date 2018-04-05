@@ -1,0 +1,15 @@
+<div id="app">
+  <h1>axios test</h1>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script>
+  axios.get('https://api.github.com/orgs/slogan-tech/repos')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+</script>
+

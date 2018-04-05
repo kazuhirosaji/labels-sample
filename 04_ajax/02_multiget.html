@@ -1,0 +1,24 @@
+<div id="app">
+  <h1>multiget test</h1>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script>
+function getOrgRepos(name) {
+  return axios.get('https://api.github.com/orgs/' + name + '/repos');
+}
+
+function getUserRepos(name) {
+  return axios.get('https://api.github.com/users/' + name + '/repos');
+}
+
+axios.all([getOrgRepos('slogan-tech'), getUserRepos('kazuhirosaji')])
+  .then(axios.spread(function (org, user) {
+    // Both requests are now complete
+    console.log('====== org =======');
+    console.log(org);
+    console.log('====== user =======');
+    console.log(user);
+  }));
+</script>
+
